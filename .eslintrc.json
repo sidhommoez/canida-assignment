@@ -1,0 +1,150 @@
+{
+  "env": {
+    "es2021": true
+  },
+  "extends": [
+    "airbnb/base",
+    "plugin:jest/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": ["tsconfig.json"]
+  },
+  "plugins": ["@typescript-eslint", "prettier", "jest", "unused-imports"],
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "packageDir": ".",
+        "devDependencies": [
+          "**/*.spec.js",
+          "**/*.spec.jsx",
+          "**/*.spec.ts",
+          "**/*.spec.tsx",
+          "**/*.e2e-spec.ts",
+          "**/*.config.js",
+          "**/*.config.ts",
+          "apps/*-e2e/**/*",
+          "**/test-setup.*"
+        ]
+      }
+    ],
+    "import/prefer-default-export": "off",
+
+    "@typescript-eslint/explicit-module-boundary-types": "warn",
+    "camelcase": "off",
+    "class-methods-use-this": "off",
+    "consistent-return": "off",
+    "default-case": "off",
+    "dot-notation": "off",
+    "@typescript-eslint/explicit-member-accessibility": [
+      "error",
+      {
+        "accessibility": "explicit",
+        "overrides": {
+          "constructors": "no-public"
+        }
+      }
+    ],
+    "jest/expect-expect": [
+      "warn",
+      { "assertFunctionNames": ["expect", "cy", "request"] }
+    ],
+    "lines-between-class-members": "off",
+    "max-classes-per-file": ["warn", 3],
+    "max-len": [
+      "warn",
+      {
+        "code": 100,
+        "comments": 130,
+        "ignoreStrings": true,
+        "ignoreRegExpLiterals": true
+      }
+    ],
+    "@typescript-eslint/member-ordering": [
+      "warn",
+      {
+        "default": [
+          "static-field",
+          "static-method",
+
+          "field",
+
+          "signature",
+
+          "constructor",
+
+          "method"
+        ]
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "warn",
+      {
+        "selector": "variable",
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "leadingUnderscore": "allow",
+        "trailingUnderscore": "forbid"
+      },
+      {
+        "selector": "variable",
+        "types": ["boolean"],
+        "format": ["camelCase", "PascalCase", "UPPER_CASE"],
+        "prefix": ["is", "are", "has", "should", "can", "should", "use", "show"]
+      },
+      {
+        "selector": "typeLike",
+        "format": ["PascalCase"]
+      }
+    ],
+    "no-bitwise": "off",
+    "@typescript-eslint/no-explicit-any": "warn",
+    "no-nested-ternary": "off",
+    "no-param-reassign": ["error", { "props": false }],
+    "no-plusplus": "off",
+    "no-shadow": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/no-shadow": ["error"],
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-use-before-define": ["error"],
+    "no-useless-constructor": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "radix": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "ignoreRestSiblings": true
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {
+        "alwaysTryTypes": true,
+        "project": "tsconfig.json"
+      }
+    }
+  }
+}
