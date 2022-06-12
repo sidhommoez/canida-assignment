@@ -26,7 +26,19 @@ The contents of this repo are structured in the following way:
 docker build -t nest-api .
 docker run -p 3001:3001 nest-api
 ```
+## API Documentation
+You access swager documentation via `localhost:3001/api/v2/api-docs`. <br />
+Or you can generate a full documentation via script `npx @compodoc/compodoc -p tsconfig.json -s`.
+## Database Design
 
+This is a simple design of the DB.
+
+![Database Design](/docs/postgres.png)
+
+So we will have multiple courses with multiple student that can subscribe to <br />
+and one profesor to enroll the course. <br />
+we will have a one to many relation between  <br />
+professor and courses and many to many between courses and students.
 ## Available Scripts
 
 The most important scripts are outlined below. You can find all script definitions in the `package.json`.
