@@ -7,7 +7,6 @@ import { HealthModule } from 'src/module/health-check.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-console.log(__dirname);
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -18,7 +17,11 @@ console.log(__dirname);
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => ({
         type: "postgres",
-        url: configService.get<string>("DATABASE_URL"),
+        password: process.env.DB_PASSWORD,
+        database: process.env.DB_DB ,
+        username: process.env.DB_USER,
+        host: process.env.DB_HOST,
+        port: parseInt(process.env.DB_PORT),
         synchronize: true,
         autoLoadEntities: true,
         // i prefer to implement this section in another way so i can switch between dev/prod env
@@ -29,7 +32,7 @@ console.log(__dirname);
         cli: {
           migrationsDir: 'src/migrations',
         },
-        logging: true,
+        logging: false,
       }),
     }),
   ],
